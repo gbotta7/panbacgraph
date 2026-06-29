@@ -1,0 +1,21 @@
+from snakemake.utils import min_version
+import os
+
+WORKDIR = "/hlilab/gianfranco/panbacgraph"
+configfile: os.path.join(WORKDIR, "workflow/config/config.yaml")
+
+min_version(config["snakemake_min_version"])
+
+container: f"docker://condaforge/mambaforge:{config['mambaforge_version']}" # to allow for reproducibility
+
+include: "rules/crispr.smk"
+
+with open(config["sample_list"]) as f:
+    sample_list = [l.strip().split("\t")[0] for l in f if l.strip()]
+
+rule all:
+    input:
+        expand(
+            os.path.join(WORKDIR, "results/interactions/{sample}_spacers_hits.paf"),
+            sample = sample_list
+        )

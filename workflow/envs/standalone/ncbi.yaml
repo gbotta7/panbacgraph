@@ -1,0 +1,6 @@
+name: ncbi
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - datasets=4.8.2

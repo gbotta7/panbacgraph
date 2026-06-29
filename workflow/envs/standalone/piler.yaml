@@ -1,0 +1,6 @@
+name: piler
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - piler=0.1

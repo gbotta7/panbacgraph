@@ -1,0 +1,20 @@
+# Ignore everything by default
+*
+
+# Keep this file
+!.gitignore
+
+# Keep the workflow directory
+!workflow/
+!workflow/**
+
+# Ignore workflow logs
+workflow/logs/
+workflow/logs/**
+
+# Ignore hidden files/directories inside workflow
+workflow/**/.*
+workflow/**/.*/**
+
+# Ignore files starting with "snakemake_"
+workflow/**/snakemake_*
