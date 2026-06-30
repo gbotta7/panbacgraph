@@ -15,7 +15,11 @@ with open(config["sample_list"]) as f:
 
 rule all:
     input:
-        expand(
-            os.path.join(WORKDIR, "results/interactions/{sample}_spacers_hits.paf"),
-            sample = sample_list
-        )
+        # expand(
+        #     os.path.join(WORKDIR, "results/interactions/{sample}_spacers_hits.paf"),
+        #     sample = sample_list
+        # ),
+        # os.path.join(WORKDIR, "results/db/genome_table.db"),
+        # os.path.join(WORKDIR, "results/db/contigmap_table.db"),
+        os.path.join(WORKDIR, "results/db/gff_table.db"),
+        os.path.join(WORKDIR, "results/db/spacers_table.db")
