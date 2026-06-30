@@ -50,6 +50,9 @@ def build_spacer_table(spacer_files, genome_db_path: str, spacer_db_path: str) -
         for spacer_seq in parse_spacer_file(spacer_path):
             rows.append((spacer_seq, source_fname))
 
+    # Add spacerID
+    rows = [(i, seq, fname) for i, (seq, fname) in enumerate(rows, start=1)]
+
     cur.executemany(
         """
         INSERT INTO spacer_table (spacer_id, spacer_sequence, source_fname)
