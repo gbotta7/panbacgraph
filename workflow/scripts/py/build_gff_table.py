@@ -64,11 +64,11 @@ def build_gff_db(gff3_files, genome_db_path, gff_db_path):
                 int(rec["phage"]),
             ))
         cur.executemany(
-            "INSERT INTO features VALUES (?,?,?,?,?,?)", rows
+            "INSERT INTO gff_table VALUES (?,?,?,?,?,?)", rows
         )
 
     # Create B-tree range index
-    cur.execute("CREATE INDEX idx_range ON features(file, start, end)")
+    cur.execute("CREATE INDEX idx_range ON gff_table(file, start, end)")
     conn.commit()
     conn.close()
 
